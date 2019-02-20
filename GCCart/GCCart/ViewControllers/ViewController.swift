@@ -9,10 +9,17 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        
+        NetworkService.sharedService.sendRequestWithService(api: API.getCartItems(), success: { [weak self] (cartInfo: CartInfoData) in
+            cartInfo.orderItemsInformation.forEach({print($0.packagingType)})
+        }, failure: { (error) in
+            print(error)
+        })
     }
 }
 

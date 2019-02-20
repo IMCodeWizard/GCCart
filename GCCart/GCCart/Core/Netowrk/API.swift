@@ -10,22 +10,34 @@ import Foundation
 import SwiftyJSON
 import Alamofire
 
+
+class API {
+    
+    class func getCartItems() -> APIStruct {
+        let end_point = "http://www.mocky.io/v2/59c791ed1100005300c39b93"
+        return APIStruct(URL: end_point, params: nil, method: .get)
+    }
+}
+
+
+
+//MARK: - API Builder
+
+enum ApiType {
+    case getCartItems
+}
+
 struct APIStruct {
     let URL: String
     let params: [String : Any]?
     let method: HTTPMethod
-    let type: ApiType
     var headers: HTTPHeaders {
-    let defaultHeaders = APIStruct.defaultHTTPHeaders
-     /*
-     guard let authToken = StorageManager.sharedStorage.app_token else { return defaultHeaders }
-     defaultHeaders["Authorization"] = "Bearer " + authToken */
-     return defaultHeaders
-     }
-}
-
-enum ApiType {
-    case getCartItems
+        let defaultHeaders = APIStruct.defaultHTTPHeaders
+        /*
+         guard let authToken = StorageManager.sharedStorage.app_token else { return defaultHeaders }
+         defaultHeaders["Authorization"] = "Bearer " + authToken */
+        return defaultHeaders
+    }
 }
 
 extension APIStruct {
@@ -74,7 +86,7 @@ extension APIStruct {
                 return "\(executable) v\(appVersion)(\(bundle); build:\(appBuild); \(osNameVersion);)"
             }
             
-            return "Remoty"
+            return "GCCart"
         }()
         
         return [

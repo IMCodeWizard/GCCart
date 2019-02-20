@@ -17,6 +17,7 @@
 		29CA376E221D4DBB0056CAC4 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29CA376D221D4DBB0056CAC4 /* NetworkService.swift */; };
 		29CA3770221D4E290056CAC4 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29CA376F221D4E290056CAC4 /* API.swift */; };
 		29CA3775221D4F690056CAC4 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29CA3774221D4F690056CAC4 /* Extensions.swift */; };
+		29D399A9221E0A12001D3B75 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D399A8221E0A12001D3B75 /* Logger.swift */; };
 		5B2B3121BEF7FA7F461723C7 /* Pods_GCCart.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 866F2B570954F1E969B5B148 /* Pods_GCCart.framework */; };
 		AA62E167AF0C127D174B7EBB /* Pods_GCCartTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 241A7FE10FDC28B7B25A779A /* Pods_GCCartTests.framework */; };
 /* End PBXBuildFile section */
@@ -47,6 +48,7 @@
 		29CA376D221D4DBB0056CAC4 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		29CA376F221D4E290056CAC4 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		29CA3774221D4F690056CAC4 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		29D399A8221E0A12001D3B75 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		56057AAFCE76A90D9AF71063 /* Pods-GCCart.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GCCart.release.xcconfig"; path = "Pods/Target Support Files/Pods-GCCart/Pods-GCCart.release.xcconfig"; sourceTree = "<group>"; };
 		565C52CBE7CF12E3B2F74834 /* Pods-GCCartTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GCCartTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GCCartTests/Pods-GCCartTests.release.xcconfig"; sourceTree = "<group>"; };
 		7FC1915CB84D1F7D41ABD187 /* Pods-GCCartTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GCCartTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GCCartTests/Pods-GCCartTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 				29CA3774221D4F690056CAC4 /* Extensions.swift */,
 				29CA3773221D4E760056CAC4 /* Models */,
 				29CA3772221D4E6C0056CAC4 /* Netowrk */,
+				29D399A8221E0A12001D3B75 /* Logger.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -359,6 +362,7 @@
 				29CA3775221D4F690056CAC4 /* Extensions.swift in Sources */,
 				29CA376C221D4DA50056CAC4 /* DataObjects.swift in Sources */,
 				29CA376E221D4DBB0056CAC4 /* NetworkService.swift in Sources */,
+				29D399A9221E0A12001D3B75 /* Logger.swift in Sources */,
 				29CA374A221D4B220056CAC4 /* AppDelegate.swift in Sources */,
 				29CA3770221D4E290056CAC4 /* API.swift in Sources */,
 			);
