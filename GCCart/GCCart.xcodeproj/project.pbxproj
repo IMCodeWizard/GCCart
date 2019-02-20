@@ -139,9 +139,9 @@
 			children = (
 				29CA3749221D4B220056CAC4 /* AppDelegate.swift */,
 				29CA3774221D4F690056CAC4 /* Extensions.swift */,
+				29D399A8221E0A12001D3B75 /* Logger.swift */,
 				29CA3773221D4E760056CAC4 /* Models */,
 				29CA3772221D4E6C0056CAC4 /* Netowrk */,
-				29D399A8221E0A12001D3B75 /* Logger.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";

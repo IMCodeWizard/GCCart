@@ -32,7 +32,7 @@ class Logger: NSObject {
         
         
         #if DEBUG
-            NSLog("\(LOGGER_SPACER_TOP)Class: \(className)\n\nDescription:\n\(String(describing: info!))\(LOGGER_SPACER_END)\n")
+            print("\(LOGGER_SPACER_TOP)Class: \(className)\n\nDescription:\n\(String(describing: info!))\(LOGGER_SPACER_END)\n")
         #endif
         
     }

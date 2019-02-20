@@ -50,12 +50,12 @@ class NetworkService: NSObject {
     func sendRequestWithService<T: Decodable>(api: APIStruct, success: ((T) -> Void)? = nil, failure: ((_ reason: String) -> Void)? = nil) -> DataRequest {
         
         let task = Alamofire.request(api.URL, method: api.method, parameters: api.params, encoding: JSONEncoding.default, headers: api.headers)
-            .validate(statusCode: 200..<300).responseData { response in
+            .validate(statusCode: 200..<300).responseData { [unowned self] response in
                 
                 switch response.result{
                     
                 case .success(let value):
-                    Logger.mainLog(className: String(describing: self) + "\n\(response.request?.url?.absoluteString ?? "")", description: api.method == .get ? "\nResponse\n\(value)" : "\nRequest\n\(JSON(response.request?.httpBody as Any))\n\nResponse\n\(JSON(value))")
+                    // Logger.mainLog(className: String(describing: self) + "\n\(response.request?.url?.absoluteString ?? "")", description: "\nResponse\n\(JSON(value))")
                                         
                     switch self.parseObj(rawData: value, generic: T.self) {
                     case .success(let obj):
