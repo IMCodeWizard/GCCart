@@ -7,7 +7,9 @@ target 'GCCart' do
 
   # Pods for GCCart
   pod 'Alamofire'
+  pod 'AlamofireImage'
   pod 'SwiftyJSON'
+  
 
   target 'GCCartTests' do
     inherit! :search_paths

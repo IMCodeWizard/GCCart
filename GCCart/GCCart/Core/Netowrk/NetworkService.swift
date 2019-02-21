@@ -8,7 +8,9 @@
 
 import Foundation
 import Alamofire
+import AlamofireImage
 import SwiftyJSON
+import UIKit
 
 class Retrier: RequestRetrier {
     
@@ -47,6 +49,21 @@ class NetworkService: NSObject {
     }
     
     @discardableResult
+    func loadImage(urlString: String, success: ((UIImage) -> Void)? = nil, failure: ((_ reason: String) -> Void)? = nil) -> DataRequest {
+        let task = Alamofire.request(urlString, method: .get, encoding: JSONEncoding.default)
+            .validate(statusCode: 200..<300).responseImage { (response) in
+                switch response.result {
+                case .success(let value):
+                    success?(value)
+                case .failure(let error):
+                    failure?(error.localizedDescription)
+                }
+                
+            }
+        return task
+    }
+    
+    @discardableResult
     func sendRequestWithService<T: Decodable>(api: APIStruct, success: ((T) -> Void)? = nil, failure: ((_ reason: String) -> Void)? = nil) -> DataRequest {
         
         let task = Alamofire.request(api.URL, method: api.method, parameters: api.params, encoding: JSONEncoding.default, headers: api.headers)
@@ -56,7 +73,7 @@ class NetworkService: NSObject {
                     
                 case .success(let value):
                     // Logger.mainLog(className: String(describing: self) + "\n\(response.request?.url?.absoluteString ?? "")", description: "\nResponse\n\(JSON(value))")
-                                        
+                    
                     switch self.parseObj(rawData: value, generic: T.self) {
                     case .success(let obj):
                         success?(obj)
@@ -71,8 +88,8 @@ class NetworkService: NSObject {
                     break
                 }
         }
-        return task
         
+     return task
     }
     
     

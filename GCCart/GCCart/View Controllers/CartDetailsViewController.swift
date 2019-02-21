@@ -10,25 +10,16 @@ import UIKit
 
 class CartDetailsViewController: BaseViewController {
     
+    @IBOutlet weak var loadingStackView: UIStackView!
     @IBOutlet weak var tableView: UITableView!
     
-    var collectionData: [OrderItemViewModel]?
+    private var collectionData: [OrderItemViewModel]?
     
     //MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
-        
-        NetworkService.sharedService.sendRequestWithService(api: API.getCartItems(), success: { [weak self] (cartInfo: CartInfoData) in
-            cartInfo.orderItemsInformation.forEach({print($0.product.name)})
-            
-            self?.collectionData = cartInfo.orderItemsInformation.map({ return OrderItemViewModel(orderItem: $0)})
-            self?.tableView.reloadData()
-            
-        }, failure: { (error) in
-            print(error)
-        })
+        fetchCollectionData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -37,13 +28,54 @@ class CartDetailsViewController: BaseViewController {
         
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if collectionData == nil {
+            showLoader()
+        }
+        
+    }
     
     //MARK: - UI Methods
-    //TODO: - Pull to refresh
-
+    func setupNavigatoinData(cartInfoData: CartInfoData) {
+        if let navItem = self.navigationController?.navigationItem {
+            self.title = "Total: \(cartInfoData.total.formattedPrice())"
+        }
+       
+        
+    }
+    
+    
+    func showLoader(){
+        self.loadingStackView.alpha = 0.0
+        UIView.animate(withDuration: 0.33) {
+            self.loadingStackView.alpha = 1.0
+        }
+    }
+    
+    func hideLoader() {
+        self.loadingStackView.alpha = 1.0
+        UIView.animate(withDuration: 0.33, animations: {
+            self.loadingStackView.alpha = 0.0
+        })
+    }
     
     //MARK: - Custom Methods
-    //TODO: - Refresh method that bring data from API
+    
+    func fetchCollectionData() {
+        NetworkService.sharedService.sendRequestWithService(api: API.getCartItems(), success: { [weak self] (cartInfo: CartInfoData) in
+            cartInfo.orderItemsInformation.forEach({print($0.product.name)})
+            self?.hideLoader()
+            self?.setupNavigatoinData(cartInfoData: cartInfo)
+            self?.collectionData = cartInfo.orderItemsInformation.map({ return OrderItemViewModel(orderItem: $0)})
+            self?.tableView.reloadData()
+            
+            
+            }, failure: { [weak self] (error) in
+                self?.hideLoader()
+                print(error)
+        })
+    }
 }
 
 //MARK: -
@@ -76,6 +108,21 @@ extension CartDetailsViewController: UITableViewDataSource, UITableViewDelegate 
         })
     }
     
+    func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
+        UIView.animate(withDuration: 0.5) {
+            if let cell = tableView.cellForRow(at: indexPath) as? CustomCell {
+                cell.contentView.backgroundColor = UIColor.init(white: 1, alpha: 0.7)
+            }
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didUnhighlightRowAt indexPath: IndexPath) {
+        UIView.animate(withDuration: 0.5) {
+            if let cell = tableView.cellForRow(at: indexPath) as? CustomCell {
+                cell.contentView.backgroundColor = .clear
+            }
+        }
+    }
     
     
 }

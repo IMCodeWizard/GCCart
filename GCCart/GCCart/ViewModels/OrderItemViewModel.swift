@@ -8,16 +8,19 @@
 
 import Foundation
 import UIKit
+import Alamofire
 
 
 class OrderItemViewModel {
     
-    let name, pricePerType, total, quantity: String
+    let name, pricePerType, total, quantity, imageUrl, packagingType: String
     let substitutable: Bool
+    var photo: UIImage?
+    var loadImageInProgress = false
     
     init(orderItem: OrderItemInformation) {
         self.name = orderItem.product.name
-        
+        self.packagingType = orderItem.packagingType.rawValue.capitalized
         let price: Double = {
             switch orderItem.packagingType {
             case .Unit:
@@ -29,11 +32,39 @@ class OrderItemViewModel {
             }
         }()
         
+        self.imageUrl = {
+            switch orderItem.packagingType {
+            case .Unit:
+                return orderItem.product.unitPhotoFilename
+            case .Case:
+                return orderItem.product.packPhotoFile
+            case .Weight:
+                return orderItem.product.weightPhotoFilename
+            }
+        }()
+        
         self.pricePerType = String(price.formattedPrice() + "/\(orderItem.packagingType.rawValue.capitalized)")
         self.total = String(orderItem.subTotal.formattedPrice())
         self.quantity = String(orderItem.quantity)
         self.substitutable = orderItem.substitutable
     }
-
     
+    func getProductPhoto(success: ((UIImage) -> Void)? = nil, failure: ((String) -> Void)? = nil) {
+        
+        if let photo = self.photo {
+            success?(photo)
+        }else{
+            
+            NetworkService.sharedService.loadImage(urlString: self.imageUrl, success: { [unowned self] (image) in
+                self.photo = image
+                success?(image)
+            }, failure: { [unowned self] (error) in
+                Logger.mainLog(className: String(describing: self), description: error)
+                failure?(error)
+            })
+        }
+        
+        
+        
+    }
 }
