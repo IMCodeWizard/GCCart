@@ -39,9 +39,11 @@ class CartDetailsViewController: BaseViewController {
     
     
     //MARK: - UI Methods
+    //TODO: - Pull to refresh
 
     
     //MARK: - Custom Methods
+    //TODO: - Refresh method that bring data from API
 }
 
 //MARK: -

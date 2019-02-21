@@ -36,5 +36,7 @@ class CustomCell: UITableViewCell {
         self.pTotal.text = orderItem.total
         self.pQuantity.text = orderItem.quantity
     }
+    
+    //TODO: - Formatted label pricePerType, substitutable image with states, load product picture
 
 }
