@@ -9,7 +9,8 @@
 import Foundation
 
 struct CartInfoData: Codable {
-    let id, total, restaurantID, subTotal: Int
+    let id, restaurantID: Int
+    let total, subTotal: Double
     let status, deliveryAddress, deliveryDate, paymentMethod, createdAtIso8601: String
     let orderItemsInformation: [OrderItemInformation]
     
@@ -26,7 +27,8 @@ struct CartInfoData: Codable {
 }
 
 class OrderItemInformation: Codable {
-    let id, orderID, quantity, productID, subTotal: Int
+    let id, orderID, quantity, productID: Int
+    let subTotal: Double
     let packagingType: PackagingType
     let substitutable: Bool
     let product: Product
@@ -47,7 +49,8 @@ enum PackagingType: String, Codable {
 }
 
 struct Product: Codable {
-    let id, unitPrice, casePrice, weightPrice, itemsPerUnit, unitsPerCase: Int
+    let id, itemsPerUnit, unitsPerCase: Int
+    let unitPrice, casePrice, weightPrice: Double
     let name, unitPhotoFilename, packPhotoFile, unitPhotoHqURL, packPhotoHqURL, weightPhotoFilename, weightPhotoHqURL: String
     
     enum CodingKeys: String, CodingKey {
