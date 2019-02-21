@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		29800E74221E268B006EA74A /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29800E73221E268B006EA74A /* CustomView.swift */; };
-		29800E77221E29F2006EA74A /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29800E76221E29F2006EA74A /* BaseViewController.swift */; };
 		29800E79221E2D72006EA74A /* OrderItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29800E78221E2D72006EA74A /* OrderItemViewModel.swift */; };
 		29800E7C221E2F53006EA74A /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29800E7B221E2F53006EA74A /* CustomCell.swift */; };
 		29CA374A221D4B220056CAC4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29CA3749221D4B220056CAC4 /* AppDelegate.swift */; };
@@ -39,7 +38,6 @@
 /* Begin PBXFileReference section */
 		241A7FE10FDC28B7B25A779A /* Pods_GCCartTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GCCartTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		29800E73221E268B006EA74A /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
-		29800E76221E29F2006EA74A /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		29800E78221E2D72006EA74A /* OrderItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderItemViewModel.swift; sourceTree = "<group>"; };
 		29800E7B221E2F53006EA74A /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		29CA3746221D4B220056CAC4 /* GCCart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GCCart.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -155,7 +153,6 @@
 		29CA376A221D4D430056CAC4 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				29800E76221E29F2006EA74A /* BaseViewController.swift */,
 				29CA374B221D4B220056CAC4 /* CartDetailsViewController.swift */,
 				29800E7B221E2F53006EA74A /* CustomCell.swift */,
 			);
@@ -395,7 +392,6 @@
 				29CA376C221D4DA50056CAC4 /* DataObjects.swift in Sources */,
 				29800E79221E2D72006EA74A /* OrderItemViewModel.swift in Sources */,
 				29CA376E221D4DBB0056CAC4 /* NetworkService.swift in Sources */,
-				29800E77221E29F2006EA74A /* BaseViewController.swift in Sources */,
 				29D399A9221E0A12001D3B75 /* Logger.swift in Sources */,
 				29CA374A221D4B220056CAC4 /* AppDelegate.swift in Sources */,
 				29CA3770221D4E290056CAC4 /* API.swift in Sources */,
